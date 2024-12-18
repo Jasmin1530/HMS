@@ -1,0 +1,124 @@
+<html>
+<head>
+    <title>Hotel Management System</title>
+    <style>
+         body{
+            background-color:honeydew;
+            color:rgb(61, 22, 22);
+         }
+         .menu {
+            width:100%;
+            background-color:rgb(5, 48, 65);
+            color:white;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+            display: flex; 
+            align-items: center;
+            justify-content: flex-start;
+        }
+         
+        .menu img {
+            height: 80px; 
+            width: auto;
+        }
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .menu li {
+            display: inline-block;
+            position: relative;
+            margin: 0 15px;
+        }
+        .menu li:hover{
+            text-decoration: underline;
+            color:bisque;
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            display: block;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+            color: bisque;
+        }
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px; 
+        }
+        .image-container img {
+            max-width: 35%; 
+            height: 300px; 
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .image-container img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        .footer {
+            background-color:rgb(5, 48, 65);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: large;
+            position: relative;
+            bottom: 0; 
+            width: 100%;
+            box-shadow: 0 -4px 8px hsla(273, 84%, 12%, 0.2);
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+            color:bisque;
+        }
+    
+
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <img src="logo-1.webp" alt="logo">
+        <ul>
+        <li><a href="Lab-1.html">Home</a> </li>
+        <li><a href="About us.html">About us</a></li>
+        <li><a href="amenities.html"> Amenities</a></li>
+        <li><a href="gallery.html"> Gallery</a></li>
+        </ul>
+    </div>
+    <h1><center><u>GALLERY</u></center></h1>
+    <div class="image-container">
+        
+        <img src="Y1.webp" alt="images">
+        <img src="K6.webp" alt="images">
+        <img src="K2.jpeg" alt="images">
+        <img src="K1.jpg" alt="images">
+        <img src="Y2.webp" alt="images">
+        <img src="CS1.jpg" alt="images">
+        <img src="S5.webp" alt="images">
+        <img src="EC6.png" alt="images">
+        <img src="Y6.jpg" alt="images">
+        <img src="K3.jpg" alt="images">   
+    </div><br><br>
+    <footer class="footer">
+        <p><a href="Contact.html">Contact Us</a> | <a href="PrivacyPolicy.html">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>

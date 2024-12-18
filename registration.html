@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      
+      font-family: 'Arial', sans-serif;
+            background-color: honeydew;
+            color: rgb(61, 22, 22);
+    }
+    .container {
+      max-width: 500px;
+      margin-top: 50px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color:whitesmoke;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #4e73df;
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+    }
+    .form-label {
+      font-weight: 600;
+    }
+    .btn-primary {
+      background-color: #4e73df;
+      border-color: #4e73df;
+      font-weight: 600;
+    }
+    .btn-primary:hover {
+      background-color: #3e5bbf;
+      border-color: #3e5bbf;
+    }
+    .menu {
+                width:100%;
+                background-color:rgb(5, 48, 65);
+                color:white;
+                padding: 10px;
+                text-align: center;
+                font-size: 20px;
+                display: flex; 
+                align-items: center;
+                justify-content:space-between;
+            }
+             
+            .menu img {
+                height: 80px; 
+                width: auto;
+            }
+            .menu ul {
+                display: flex;
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+            .menu li {
+                margin: 0 15px;
+            }
+            .menu li:hover{
+                text-decoration: underline;
+                color:bisque;
+            }
+            .menu a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                padding: 10px;
+                display: block;
+            }
+    
+            .menu a:hover {
+                text-decoration: underline;
+                color: bisque;
+            }
+            
+  </style>
+</head>
+<body>
+  <div class="menu">
+    <img src="logo-1.webp" alt="logo">
+    <ul>
+        <li><a href="Lab-1.html"><i class="fa-solid fa-house"></i></a> </li>
+        
+        </div>
+
+  <div class="container">
+    <h2 class="text-center">Create an Account</h2>
+    <form>
+      <div class="mb-4">
+        <label for="fullName" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
+      </div>
+      
+      <div class="mb-4">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter your email (example@gmail.com)" required>
+      </div>
+      
+      <div class="mb-4">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter a strong password" required>
+      </div>
+      
+      <div class="mb-4">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
+      </div>
+      
+      <button type="submit" class="btn btn-primary w-100">Register</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Clocks</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: honeydew;
+      margin: 0;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2em;
+      color: #343a40;
+    }
+    .clock-container {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      background: rgb(230, 228, 228);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .clock {
+      text-align: center;
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    canvas {
+      display: block;
+      margin: 0 auto 10px;
+      border: 2px solid #333;
+      border-radius: 50%;
+      background: #fdfdfd;
+    }
+    p {
+      font-size: 1.2em;
+      color: #495057;
+      margin: 0;
+    }
+    .menu {
+      width: 100%;
+      background-color: rgb(5, 48, 65);
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 25px;
+      display: flex; 
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .menu img {
+      height: 80px; 
+      width: auto;
+    }
+    .menu ul {
+      list-style-type: none;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .menu li {
+      display: inline-block;
+      position: relative;
+      margin: 0 15px;
+    }
+    .menu li:hover {
+      text-decoration: underline;
+      color: bisque;
+    }
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px;
+      display: block;
+    }
+    .menu a:hover {
+      text-decoration: underline;
+      color: bisque;
+    }
+    .footer {
+      background-color: rgb(5, 48, 65);
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: large;
+      position: relative;
+      bottom: 0; 
+      width: 100%;
+      box-shadow: 0 -4px 8px hsla(273, 84%, 12%, 0.2);
+    }
+    .footer a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+      color: bisque;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu">
+    <img src="logo-1.webp" alt="logo">
+    <ul>
+      <li><a href="Lab-1.html">Home</a></li>
+      <li><a href="About us.html">About us</a></li>
+      <li><a href="amenities.html">Amenities</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="4.html">Time-zones</a></li>
+    </ul>
+  </div>
+
+  <h1>Booking from other country is now stress-free 😉</h1>
+  <h2>You can now look into the time according to different countries to avoid confusions and make sure the booking is proper</h2>
+
+  <div class="clock-container">
+    <div class="clock">
+      <canvas id="clockNY" width="200" height="200"></canvas>
+      <p>New York</p>
+    </div>
+    <div class="clock">
+      <canvas id="clockLondon" width="200" height="200"></canvas>
+      <p>London</p>
+    </div>
+    <div class="clock">
+      <canvas id="clockTokyo" width="200" height="200"></canvas>
+      <p>Tokyo</p>
+    </div>
+    <div class="clock">
+      <canvas id="clockIndia" width="200" height="200"></canvas>
+      <p>India</p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p><a href="Contact.html">Contact Us</a> | <a href="PrivacyPolicy.html">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    const clocks = [
+      { id: "clockNY", offset: -5 },   // New York (UTC-5)
+      { id: "clockLondon", offset: 0 }, // London (UTC+0)
+      { id: "clockTokyo", offset: 9 },  // Tokyo (UTC+9)
+      { id: "clockIndia", offset: 5.5 } // India (UTC+5:30)
+    ];
+
+    function drawClock(ctx, radius, offset) {
+      drawFace(ctx, radius);
+      drawNumbers(ctx, radius);
+      drawTime(ctx, radius, offset);
+    }
+
+    function drawFace(ctx, radius) {
+      ctx.beginPath();
+      ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+      ctx.fillStyle = '#f9f9f9';
+      ctx.fill();
+      const grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
+      grad.addColorStop(0, '#ddd');
+      grad.addColorStop(0.5, '#fff');
+      grad.addColorStop(1, '#ddd');
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = radius * 0.1;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(0, 0, radius * 0.08, 0, 2 * Math.PI);
+      ctx.fillStyle = '#FF4500';
+      ctx.fill();
+    }
+
+    function drawNumbers(ctx, radius) {
+      ctx.font = `${radius * 0.15}px Arial`;
+      ctx.textBaseline = "middle";
+      ctx.textAlign = "center";
+      for (let num = 1; num <= 12; num++) {
+        const ang = (num * Math.PI) / 6;
+        ctx.rotate(ang);
+        ctx.translate(0, -radius * 0.85);
+        ctx.rotate(-ang);
+        ctx.fillText(num.toString(), 0, 0);
+        ctx.rotate(ang);
+        ctx.translate(0, radius * 0.85);
+        ctx.rotate(-ang);
+      }
+    }
+
+    function drawTime(ctx, radius, offset) {
+      const now = new Date();
+      const utcHours = now.getUTCHours();
+      const utcMinutes = now.getUTCMinutes();
+      const utcSeconds = now.getUTCSeconds();
+      const totalOffsetMinutes = offset * 60;
+      const localMinutes = utcMinutes + totalOffsetMinutes;
+      const localHours = (utcHours + Math.floor(localMinutes / 60)) % 24;
+      const adjustedMinutes = localMinutes % 60;
+      const hour = (localHours % 12) + adjustedMinutes / 60;
+      const minute = adjustedMinutes;
+      const second = utcSeconds;
+
+      drawHand(ctx, (hour * Math.PI) / 6, radius * 0.5, radius * 0.07);
+      drawHand(ctx, (minute * Math.PI) / 30, radius * 0.75, radius * 0.05);
+      drawHand(ctx, (second * Math.PI) / 30, radius * 0.9, radius * 0.02, 'red');
+    }
+
+    function drawHand(ctx, angle, length, width, color = 'black') {
+      ctx.beginPath();
+      ctx.lineWidth = width;
+      ctx.strokeStyle = color;
+      ctx.moveTo(0, 0);
+      ctx.rotate(angle);
+      ctx.lineTo(0, -length);
+      ctx.stroke();
+      ctx.rotate(-angle);
+    }
+
+    function updateClocks() {
+      clocks.forEach(clock => {
+        const canvas = document.getElementById(clock.id);
+        const ctx = canvas.getContext('2d');
+        const radius = canvas.height / 2;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.translate(radius, radius);
+        drawClock(ctx, radius, clock.offset);
+        ctx.translate(-radius, -radius);
+      });
+    }
+
+    setInterval(updateClocks, 1000);
+    updateClocks();
+  </script>
+</body>
+</html>

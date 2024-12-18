@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: honeydew;
+            color: rgb(61, 22, 22);
+        }
+
+      
+        .menu {
+            width: 100%;
+            background-color: rgb(5, 48, 65);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        .menu img {
+            height: 80px;
+            width: auto;
+        }
+        .menu ul {
+            list-style-type: none;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+        }
+        .menu li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .menu a:hover {
+            text-decoration: underline;
+            color: bisque;
+        }
+
+        .menu i {
+            font-size: 20px;
+            margin-right: 5px;
+            
+        }
+
+        .custom-audio-container {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        .audio-button {
+            background-color: rgb(153, 175, 183);
+            margin-left: 10px;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px 15px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .audio-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+        .audio-button.active {
+            background-color: green;
+        }
+
+        
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: url('BG.5.jpg') no-repeat center center/cover;
+            background-attachment: fixed; 
+            background-position: center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            background-blend-mode: overlay;
+            background-color: rgba(5, 48, 65, 0.6);
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            font-family: 'Times New Roman', serif;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero .btn {
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .hero .btn-primary {
+            background-color: bisque;
+            color: rgb(5, 48, 65);
+        }
+
+        .hero .btn-primary:hover {
+            background-color: rgb(5, 48, 65);
+            color: bisque;
+        }
+        
+        
+        .footer {
+            background-color: rgb(5, 48, 65);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+            color: bisque;
+        }
+
+      
+        .carousel-item img {
+            height: 500px;
+            width: auto;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+        }
+
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .hero .btn {
+                font-size: 1rem;
+                padding: 8px 20px;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('background-audio');
+            const button = document.getElementById('audio-control');
+            button.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.muted = false;
+                    audio.play();
+                    button.classList.add('active');
+                    button.textContent = '🔊'; 
+                } else {
+                    audio.pause();
+                    button.classList.remove('active');
+                    button.textContent = '🔈'; 
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    
+    <div class="menu">
+        <img src="logo-1.webp" alt="Logo">
+        <ul>
+            <li><a href="Lab-1.html"><i class="fa-solid fa-house"> Home</i></a></li>
+            <li><a href="About us.html">About Us</a></li>
+            <li><a href="gallery.html" ><i class="fa-solid fa-images"> Gallery</i></a></li>
+            <li><a href="4.html">Time Zones</a></li>
+        </ul>
+        <div class="custom-audio-container">
+            <audio id="background-audio" autoplay muted loop>
+                <source src="audio-1.mp3" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+            <button id="audio-control" class="audio-button">🔊</button>
+        </div>
+    </div>
+
+    <section class="hero">
+        <h1>Welcome to Elite Stay</h1>
+        <p>Where Every Stay Becomes a Story</p>
+        <div>
+            <a href="amenities.html" class="btn btn-primary">Discover Amenities</a>
+            <a href="registration.html" class="btn btn-primary"><i class="fa-solid fa-user"></i> Register</a>
+        </div>
+    </section>
+    <br><br>
+
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block" src="IN1.webp" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block" src="EC5.jpeg" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block" src="IN5.jpg" alt="Third slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block" src="S6.jpeg" alt="Fourth slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block" src="K1.jpg" alt="Fifth slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block" src="CS1.jpg" alt="Sixth slide">
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div>
+        <p><big>At <b>Elite Stay</b>, we focus on delivering an exceptional guest experience. It is designed to help you handle all operations under a single platform.</big></p>
+        <p><big><b>Why choose us?</b><br>
+            We understand the challenges of running a hotel, from managing reservations to ensuring guest satisfaction. Our solution simplifies these processes, helping you save time, reduce costs, and improve guest loyalty.</big></p>
+        <p><big><b>Transform Your Hotel Operations Today</b><br>
+            Join hundreds of clients that trust Elite Stay for their management needs. Explore how our intuitive platform can make a difference in your day-to-day operations.
+        </big></p>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Elite Stay | <a href="Contact.html">Contact Us</a> | <a href="PrivacyPolicy.html">Privacy Policy</a></p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
