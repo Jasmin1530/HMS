@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="hotelmanagement.xsl"?> 
+<hotel-management> 
+    <hotel>
+        <room>
+            <roomno>101</roomno>
+            <roomtype>Deluxe</roomtype>
+            <occupancy>2 People</occupancy>
+            <facilities>WiFi, AC</facilities>
+            <price>2000</price>
+        </room>
+        <room>
+            <roomno>102</roomno>
+            <roomtype>Standard</roomtype>
+            <occupancy>2 People</occupancy>
+            <facilities>WiFi</facilities>
+            <price>800</price>
+        </room>
+        <room>
+            <roomno>001</roomno>
+            <roomtype>Deluxe with Swimming Pool</roomtype>
+            <occupancy>4 People</occupancy>
+            <facilities>WiFi, AC, Swimming Pool</facilities>
+            <price>3800</price>
+        </room>
+        <room>
+            <roomno>010</roomno>
+            <roomtype>Deluxe with Indoor Sports/Gym</roomtype>
+            <occupancy>4 People</occupancy>
+            <facilities>WiFi, AC, Gym</facilities>
+            <price>4500</price>
+        </room>
+    </hotel>
+</hotel-management>
